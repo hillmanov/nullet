@@ -1,0 +1,24 @@
+{
+  "name": "nullet",
+  "version": "0.0.1",
+  "description": "Quickly check to see if sub objects of an object exist",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "~1.6.0",
+    "should": "~1.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hillmanov/nullet.git"
+  },
+  "author": "Scott Hillman",
+  "license": "BSD"
+}
