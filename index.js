@@ -2,29 +2,16 @@
 
 (function(exports) {
 
-  function cloneObject(obj) {
-    var clone = {};
-    for(var prop in obj) {
-      if(typeof(obj[prop]) == 'object')
-        clone[prop] = cloneObject(obj[prop]);
-      else
-        clone[prop] = obj[prop];
-    }
-    return clone;
+  exports.get = function(object, namespace, defaultVal) {
+    if (object == null) return defaultVal;
+
+    var names = namespace.split('.').reverse();
+
+    while(names.length && (object = object[names.pop()]) != null);
+
+    return(object == null ? defaultVal : object);
   }
 
-  exports.get = function(object, subAccessor, defaultVal) {
-    var currentObj = cloneObject(object)
-      , parts      = subAccessor.split('.')
-      , i
-      ;
-
-    for (i = 0; i < parts.length; i++) {
-      if (!currentObj[parts[i]]) return defaultVal;
-      currentObj = currentObj[parts[i]];
-    }
-    return currentObj
-  }
 }(typeof exports === "undefined"
        ? (this.nullet = {})
        : exports));

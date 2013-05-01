@@ -1,6 +1,6 @@
 {
   "name": "nullet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Quickly check to see if sub objects of an object exist",
   "main": "index.js",
   "directories": {

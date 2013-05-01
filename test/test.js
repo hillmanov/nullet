@@ -1,5 +1,5 @@
 var nullet  = require('../')
-  , should  = require('should')
+  , assert  = require('assert')
   , SUCCESS = 'SUCCESS'
   , FAILURE = 'FAILURE'
   , testObj
@@ -20,22 +20,22 @@ testObj = {
 describe('nullet', function(){
   describe('get', function(){
     it('should not find a value', function(){
-        nullet.get(testObj.badVal, 'nothing', FAILURE).should.equal(FAILURE)
+        assert.equal(nullet.get(testObj.badVal, 'nothing', FAILURE), FAILURE);
     });
     it('should find top level value', function(){
-        nullet.get(testObj, 'name', FAILURE).should.equal(SUCCESS);
+        assert.equal(nullet.get(testObj, 'name', FAILURE), SUCCESS);
     });
     it('should not find a top level value', function(){
-        nullet.get(testObj, 'age', SUCCESS).should.equal(SUCCESS);
+        assert.equal(nullet.get(testObj, 'age', SUCCESS), SUCCESS);
     });
     it('should find a deeply nested value', function(){
-        nullet.get(testObj, 'sub1.sub2.sub3.value', FAILURE).should.equal(SUCCESS);
+        assert.equal(nullet.get(testObj, 'sub1.sub2.sub3.value', FAILURE), SUCCESS);
     });
     it('should not find a deeply nested value', function(){
-        nullet.get(testObj, 'sub1.sub2.sub3.sub4.value', FAILURE).should.equal(FAILURE);
+        assert.equal(nullet.get(testObj, 'sub1.sub2.sub3.sub4.value', FAILURE), FAILURE);
     });
     it('should find a deeply nested value, which is a function', function(){
-        nullet.get(testObj, 'sayName', function() { return FAILURE })().should.equal(SUCCESS);
+        assert.equal(nullet.get(testObj, 'sayName', function() { return FAILURE })(), SUCCESS);
     });
   })
 })
